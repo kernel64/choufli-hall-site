@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>API Choufli 7all</title>
+
+    <meta name="description" content="API Choufli Hall provides random quotes from the Tunisian series 'شوفلي حل'. It's an open-source REST API built in PHP using the Mabs micro framework.">
+
+    <meta name="keywords" content="API, Choufli Hall, Tunisian series, quotes, REST API, open-source, PHP, Mabs framework">
+    
+    <!-- Author -->
+    <meta name="author" content="Mohamed Aymen Ben Slimane">
+
+    <meta property="og:title" content="API Choufli Hall - Random Quotes">
+    <meta property="og:description" content="An open-source REST API providing random quotes from the iconic Tunisian series 'شوفلي حل'.">
+    <meta property="og:image" content="https://choufli-hall.mabslabs.com/pic/sboui.jpg"> 
+    <meta property="og:url" content="https://choufli-hall.mabslabs.com/">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="Sboui">
+    <meta name="twitter:title" content="API Choufli Hall - Random Quotes">
+    <meta name="twitter:description" content="An open-source REST API providing random quotes from the iconic Tunisian series 'شوفلي حل'.">
+    <meta name="twitter:image" content="https://choufli-hall.mabslabs.com/pic/sboui.jpg">
+	
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">API Choufli 7all</h1>
+        <p class="lead">An open-source REST API providing quotes from the Tunisian series "شوفلي حل".</p>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">API Overview</h2>
+        <p>This API provides random quotes from the iconic Tunisian TV series <strong>"Choufli Hal"</strong>. It is 100% built in PHP using the Mabs micro framework.</p>
+
+        <h2 class="mt-5">Available Endpoints</h2>
+        <h4 class="mt-4">GET /random</h4>
+        <p>Returns a random quote in JSON format:</p>
+        
+
+		<div id="quote-card" class="card mb-4">
+            <div class="card-body d-flex align-items-center">
+                <img id="actor-pic" src="" class="card-img w-25 mr-3" width="200px" alt="Character Image">
+          
+				<pre id="quote-text" class="card-text bg-light p-3 rounded">
+		Loading quote...
+				</pre>
+            </div>
+        </div>
+
+        <h4 class="mt-5">Example Usage</h4>
+        <p>Using <code>curl</code>:</p>
+        <pre class="bg-light p-3 rounded">
+curl https://choufli-hall.mabslabs.com/api/random
+        </pre>
+
+        <h2 class="mt-5">How to Contribute</h2>
+        <p>We welcome contributions! You can help by adding quotes to the repository. Visit the <a href="https://github.com/mabslabs/api-choufli-7all" target="_blank">GitHub repository</a> for more details.</p>
+    </div>
+</section>
+
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p>&copy; 2024 Choufli Hall API - Powered by <a href="https://mabslabs.com" class="text-white" target="_blank">Mabs Labs</a></p>
+    </div>
+</footer
+
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+ $(document).ready(function () {
+	$.ajax({
+            url: 'https://choufli-hall.mabslabs.com/api/random',
+            method: 'GET',
+            success: function(data) {
+                $('#quote-text').text(JSON.stringify(data, null,'\t'));
+				$('#actor-pic').attr('src','https://choufli-hall.mabslabs.com/pic/' +data.actor_slug+'.jpg');
+            },
+            error: function() {
+                $('#quote-text').text('Failed to load quote.');
+            }
+        });
+ });
+</script>
+
+</body>
+</html>
